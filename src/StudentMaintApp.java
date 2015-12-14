@@ -54,7 +54,7 @@ public class StudentMaintApp implements StudentConstants
 		System.out.println("list    - List all students");
 		System.out.println("add     - Add a student");
 		System.out.println("del     - Delete a student");
-                System.out.println("sort     -Sort students by score and display");
+                System.out.println("sort     -Sort students by score or name and display");
 		System.out.println("help    - Show this menu");
 		System.out.println("exit    - Exit this application\n");
 	}
