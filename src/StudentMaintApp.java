@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.*;
 
 public class StudentMaintApp implements StudentConstants
 {
@@ -98,16 +99,18 @@ public class StudentMaintApp implements StudentConstants
             action = Validator.getString(sc,
 				"Enter a command: ");
             
-            
+            String sortMode;
             if (action.equalsIgnoreCase("s")||action.equalsIgnoreCase("score")){
                              //TODO 
                              // Indicator for sort by score
+                sortMode = "score";
 				System.out.println("Sort by score?");
                         }
 			
             else if (action.equalsIgnoreCase("n") || action.equalsIgnoreCase("name")){
                  //TODO 
                  // Indicator for sort by name
+                sortMode = "name";
                 System.out.println("Sort by name");
             }		
             else{
@@ -122,6 +125,15 @@ public class StudentMaintApp implements StudentConstants
 			System.out.println("Error! Unable to get students.\n");
 		}
                 else{ //TODO sort
+               if (sortMode.equalsIgnoreCase("score")){
+                   
+                   Collections.sort(students, Student.sortScore);
+
+               }
+               else if (sortMode.equalsIgnoreCase("name")){
+                   Collections.sort(students, Student.sortName);
+               }
+                       
                     
                 }
                 

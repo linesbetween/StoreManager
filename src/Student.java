@@ -1,5 +1,5 @@
 
-import java.text.NumberFormat;
+import java.util.Comparator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -62,6 +62,40 @@ public class Student
 		return score;
 	}
 	
+        
+        
+
+         /*Comparator for sorting the list by score*/
+    public static Comparator<Student> sortScore = new Comparator<Student>() {
+
+	public int compare(Student s1, Student s2) {
+
+	   double score1 = s1.getScore();
+	   double score2 = s2.getScore();
+
+	   /*For ascending order*/
+           if (score1>score2)
+	   return 1;
+           else
+           return -1;
+
+	   /*For descending order*/
+	   //rollno2-rollno1;
+   }};
+
+    
+    public static Comparator<Student> sortName = new Comparator<Student>() {
+
+	public int compare(Student s1, Student s2) {
+	   String name1 = s1.getName().toUpperCase();
+	   String name2 = s2.getName().toUpperCase();
+
+	   //ascending order
+	   return name1.compareTo(name2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
 
 
 	
