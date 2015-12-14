@@ -135,10 +135,17 @@ public class StudentMaintApp implements StudentConstants
               if (action.equalsIgnoreCase("y")||action.equalsIgnoreCase("yes")){
                              //TODO 
                             
-               // boolean success = studentDAO.saveStudents(students);
+               boolean success = studentDAO.saveStudents(students);
+               if (success){
                 System.out.println("Saved to xml");
                 System.out.println("Returning to main menu");
                 System.out.println();
+               }
+               else{
+                System.out.println("Save falied!");
+                System.out.println("Returning to main menu");
+                System.out.println();
+               }
                         }
 			
             else if (action.equalsIgnoreCase("n") || action.equalsIgnoreCase("no")){

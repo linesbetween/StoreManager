@@ -19,7 +19,7 @@ public class StudentXMLFile implements StudentDAO
             productsFile.createNewFile();
     }
 
-    private boolean saveStudents(ArrayList<Student> students)
+    protected boolean saveStudents(ArrayList<Student> students)
     {
         // create the XMLOutputFactory object
         XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
