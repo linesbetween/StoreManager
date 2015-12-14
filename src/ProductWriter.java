@@ -1,6 +1,6 @@
 public interface ProductWriter
 {
-	boolean addProduct(Product p);
-	boolean updateProduct(Product p);
-	boolean deleteProduct(Product p);
+	boolean addStudent(Student s);
+	boolean updateStudent(Student s);
+	boolean deleteStudent(Student s);
 }

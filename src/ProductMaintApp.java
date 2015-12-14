@@ -4,16 +4,16 @@ import java.util.ArrayList;
 public class ProductMaintApp implements ProductConstants
 {
 	// declare two class variables
-	private static ProductDAO productDAO = null;
+	private static ProductDAO studentDAO = null;
 	private static Scanner sc = null;
 
 	public static void main(String args[])
 	{
 		// display a welcome message
-		System.out.println("Welcome to the Product Maintenance application\n");
+		System.out.println("Welcome to the Student score table\n");
 
 		// set the class variables
-		productDAO = DAOFactory.getProductDAO();
+		studentDAO = DAOFactory.getProductDAO();
 		sc = new Scanner(System.in);
 
 		// display the command menu
@@ -29,11 +29,11 @@ public class ProductMaintApp implements ProductConstants
 			System.out.println();
 
 			if (action.equalsIgnoreCase("list"))
-				displayAllProducts();
+				displayAllStudents();
 			else if (action.equalsIgnoreCase("add"))
-				addProduct();
+				addStudent();
 			else if (action.equalsIgnoreCase("del") || action.equalsIgnoreCase("delete"))
-				deleteProduct();
+				deleteStudent();
 			else if (action.equalsIgnoreCase("help") || action.equalsIgnoreCase("menu"))
 				displayMenu();
 			else if (action.equalsIgnoreCase("exit"))
@@ -46,85 +46,85 @@ public class ProductMaintApp implements ProductConstants
 	public static void displayMenu()
 	{
 		System.out.println("COMMAND MENU");
-		System.out.println("list    - List all products");
-		System.out.println("add     - Add a product");
-		System.out.println("del     - Delete a product");
+		System.out.println("list    - List all students");
+		System.out.println("add     - Add a student");
+		System.out.println("del     - Delete a student");
 		System.out.println("help    - Show this menu");
 		System.out.println("exit    - Exit this application\n");
 	}
 
-	public static void displayAllProducts()
+	public static void displayAllStudents()
 	{
-		System.out.println("PRODUCT LIST");
+		System.out.println("STUDENT LIST");
 
-		ArrayList<Product> products = productDAO.getProducts();
-		if (products == null)
+		ArrayList<Student> students = studentDAO.getStudents();
+		if (students == null)
 		{
-			System.out.println("Error! Unable to get products.\n");
+			System.out.println("Error! Unable to get students.\n");
 		}
 		else
 		{
-			Product p = null;
+			Student s = null;
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < products.size(); i++)
+			for (int i = 0; i < students.size(); i++)
 			{
-				p = products.get(i);
+				s = students.get(i);
 				sb.append
 				(
 					StringUtils.padWithSpaces(
-						p.getCode(), CODE_SIZE + 4) +
+						s.getId(), ID_SIZE + 4) +
 					StringUtils.padWithSpaces(
-						p.getDescription(), DESCRIPTION_SIZE + 4) +
-					p.getFormattedPrice() + "\n"
+						s.getName(), NAME_SIZE + 4) +
+					s.getScore() + "\n"
 				);
 			}
 			System.out.println(sb.toString());
 		}
 	}
 
-	public static void addProduct()
+	public static void addStudent()
 	{
-		String code = Validator.getString(
-			sc, "Enter product code: ");
-		String description = Validator.getLine(
-			sc, "Enter product description: ");
-		double price = Validator.getDouble(
-			sc, "Enter price: ");
+		String id = Validator.getString(
+			sc, "Enter student id (less than 4 characters): ");
+		String name = Validator.getLine(
+			sc, "Enter student name: ");
+		double score = Validator.getDouble(
+			sc, "Enter score: ");
 
-		Product product = new Product();
-		product.setCode(code);
-		product.setDescription(description);
-		product.setPrice(price);
-		boolean success = productDAO.addProduct(product);
+		Student student = new Student();
+		student.setId(id);
+		student.setName(name);
+		student.setScore(score);
+		boolean success = studentDAO.addStudent(student);
 
 		System.out.println();
 		if (success)
-			System.out.println(description
+			System.out.println(name
 				+ " was added to the database.\n");
 		else
-			System.out.println("Error! Unable to add product\n");
+			System.out.println("Error! Unable to add student\n");
 	}
 
-	public static void deleteProduct()
+	public static void deleteStudent()
 	{
-		String code = Validator.getString(sc,
+		String id = Validator.getString(sc,
 			"Enter product code to delete: ");
 
-		Product p = productDAO.getProduct(code);
+		Student s = studentDAO.getStudent(id);
 
 		System.out.println();
-		if (p != null)
+		if (s != null)
 		{
-			boolean success = productDAO.deleteProduct(p);
+			boolean success = studentDAO.deleteStudent(s);
 			if (success)
-				System.out.println(p.getDescription()
+				System.out.println(s.getName()
 					+ " was deleted from the database.\n");
 			else
-				System.out.println("Error! Unable to add product\n");
+				System.out.println("Error! Unable to delete student\n");
 		}
 		else
 		{
-			System.out.println("No product matches that code.\n");
+			System.out.println("No product matches that id.\n");
 		}
 	}
 }

@@ -2,6 +2,6 @@ import java.util.ArrayList;
 
 public interface ProductReader
 {
-	Product getProduct(String code);
-	ArrayList<Product> getProducts();
+	Student getStudent(String id);
+	ArrayList<Student> getStudents();
 }
