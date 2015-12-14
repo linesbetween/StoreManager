@@ -2,9 +2,9 @@ public class DAOFactory
 {
 	// this method maps the ProductDAO interface
 	// to the appropriate data storage mechanism
-	public static ProductDAO getProductDAO()
+	public static StudentDAO getProductDAO()
 	{
-		ProductDAO pDAO = new ProductXMLFile();
+		StudentDAO pDAO = new StudentXMLFile();
 		return pDAO;
 	}
 }

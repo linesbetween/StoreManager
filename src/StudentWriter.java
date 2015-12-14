@@ -1,4 +1,4 @@
-public interface ProductWriter
+public interface StudentWriter
 {
 	boolean addStudent(Student s);
 	boolean updateStudent(Student s);

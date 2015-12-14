@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ProductMaintApp implements ProductConstants
+public class StudentMaintApp implements StudentConstants
 {
 	// declare two class variables
-	private static ProductDAO studentDAO = null;
+	private static StudentDAO studentDAO = null;
 	private static Scanner sc = null;
 
 	public static void main(String args[])

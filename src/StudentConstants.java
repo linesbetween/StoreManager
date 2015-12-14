@@ -1,4 +1,4 @@
-public interface ProductConstants
+public interface StudentConstants
 {
 	int ID_SIZE = 4;
 	int NAME_SIZE = 30;

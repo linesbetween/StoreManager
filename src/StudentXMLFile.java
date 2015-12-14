@@ -2,12 +2,12 @@ import java.util.*;
 import java.io.*;
 import javax.xml.stream.*;  // StAX API
 
-public class ProductXMLFile implements ProductDAO
+public class StudentXMLFile implements StudentDAO
 {
     private String productsFilename = "students.xml";
     private File productsFile = null;
 
-    public ProductXMLFile()
+    public StudentXMLFile()
     {
         productsFile = new File(productsFilename);
     }
