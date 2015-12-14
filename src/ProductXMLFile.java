@@ -52,18 +52,18 @@ public class ProductXMLFile implements ProductDAO
                 writer.writeCharacters(Double.toString(price));
                 writer.writeEndElement();
 				
-				writer.writeStartElement("Notes");
-				writer.writeCharacters(p.getNotes());
-				writer.writeEndElement();
+		writer.writeStartElement("Notes");
+                writer.writeCharacters(p.getNotes());
+		writer.writeEndElement();
 				
-				writer.writeStartElement("Stock");
+		writer.writeStartElement("Stock");
                 int stock = p.getStock();
                 writer.writeCharacters(Integer.toString(stock));
                 writer.writeEndElement();
 				
-				writer.writeStartElement("Sold");
+		writer.writeStartElement("Sold");
                 int sold = p.getSold();
-                writer.writeCharacters(Integer.toString(price));
+                writer.writeCharacters(Integer.toString(sold));
                 writer.writeEndElement();
 				
                 writer.writeEndElement();
@@ -129,22 +129,22 @@ public class ProductXMLFile implements ProductDAO
                             double price = Double.parseDouble(priceString);
                             p.setPrice(price);
                         }
-						if (elementName.equals("Notes"))
+			if (elementName.equals("Notes"))
                         {
                             String notes = reader.getElementText();
                             p.setNotes(notes);
                         }
-						if (elementName.equals("Stock"))
+			if (elementName.equals("Stock"))
                         {
                             String stockString = reader.getElementText();
                             int stock = Integer.parseInt(stockString);
                             p.setStock(stock);
                         }
-						if (elementName.equals("Stock"))
+			if (elementName.equals("Sold"))
                         {
                             String soldString = reader.getElementText();
                             int sold = Integer.parseInt(soldString);
-                            p.setStock(sold);
+                            p.setSold(sold);
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
